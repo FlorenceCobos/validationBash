@@ -15,13 +15,15 @@ read response
            
     elif [[ $response == '2' ]]
         then
-            echo 'Avec quelle vagrant souhaites-tu intéragir (laquelle souhaites-tu éteindre) ?(Pour information, voici la liste des vagrants allumées.'
+            echo 'Avec quelle vagrant souhaites-tu intéragir (laquelle souhaites-tu éteindre/détruire) ?(Pour information, voici la liste des vagrants allumées.'
             sleep 2
             vagrant global-status | grep -r running
             sleep 1
+            echo 'Que souhaites tu faires : entrer "destroy" pour détruire la vagrant ou "halt" afin d éteindre la vagrant'
+            read choix
             echo -e 'Alors, quel est ton choix de vagrant (saisir son ID) ?'
             read vagrant
-            vagrant destroy $vagrant
+            vagrant $choix $vagrant
             
 
     else
